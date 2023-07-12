@@ -11,13 +11,13 @@ class User {
 		User.objCount++;
 		User.objArray.push(this);
 
-		// if (localStorage.getItem("Users") != null) {
-		// 	let users = localStorage.getItem("Users");
-		// 	let objUsers = JSON.parse(users);
-		// 	User.objArray = objUsers;
-		// } else {
-		// 	localStorage.setItem("Users", JSON.stringify(User.objArray));
-		// }
+		if (localStorage.getItem("Users") != null) {
+			let users = localStorage.getItem("Users");
+			let objUsers = JSON.parse(users);
+			User.objArray = objUsers;
+		} else {
+			localStorage.setItem("Users", JSON.stringify(User.objArray));
+		}
 	}
 
 	static updateNamaById(id, nama) {
@@ -129,38 +129,36 @@ for (let i = 0; i < User.objCount; i++) {
 	const mainElement = document.querySelector("main");
 	const cardBoardElement = document.createElement("card-board");
 
-	
-		cardBoardElement.id = User.objArray[i].id;
-		cardBoardElement.nama = User.objArray[i].nama;
-		cardBoardElement.scoreValue = User.objArray[i].score;
+	cardBoardElement.id = User.objArray[i].id;
+	cardBoardElement.nama = User.objArray[i].nama;
+	cardBoardElement.scoreValue = User.objArray[i].score;
 
-		cardBoardElement.onPlusButtonClick = () => {
-			const id = cardBoardElement.id;
-			let score;
-			if (cardBoardElement.scoreValue >= 0) {
-				score = cardBoardElement.scoreValue + 1;
-			}
-			User.updateScoreById(id, score);
-			cardBoardElement.scoreValue = score;
-		};
+	cardBoardElement.onPlusButtonClick = () => {
+		const id = cardBoardElement.id;
+		let score;
+		if (cardBoardElement.scoreValue >= 0) {
+			score = cardBoardElement.scoreValue + 1;
+		}
+		User.updateScoreById(id, score);
+		cardBoardElement.scoreValue = score;
+	};
 
-		cardBoardElement.onMinButtonClick = () => {
-			const id = cardBoardElement.id;
-			let score;
-			if (cardBoardElement.scoreValue > 0) {
-				score = cardBoardElement.scoreValue - 1;
-			}
-			User.updateScoreById(id, score);
-			cardBoardElement.scoreValue = score;
-		};
+	cardBoardElement.onMinButtonClick = () => {
+		const id = cardBoardElement.id;
+		let score;
+		if (cardBoardElement.scoreValue > 0) {
+			score = cardBoardElement.scoreValue - 1;
+		}
+		User.updateScoreById(id, score);
+		cardBoardElement.scoreValue = score;
+	};
 
-		cardBoardElement.onChangeNameClick = () => {
-			const id = cardBoardElement.id;
-			const inputNama = prompt("Nama :");
-			User.updateNamaById(id, inputNama);
-			cardBoardElement.nama = inputNama;
-		};
-	
+	cardBoardElement.onChangeNameClick = () => {
+		const id = cardBoardElement.id;
+		const inputNama = prompt("Nama :");
+		User.updateNamaById(id, inputNama);
+		cardBoardElement.nama = inputNama;
+	};
 
 	mainElement.appendChild(cardBoardElement);
 }
