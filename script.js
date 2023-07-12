@@ -11,13 +11,13 @@ class User {
 		User.objCount++;
 		User.objArray.push(this);
 
-		if (localStorage.getItem("Users") != null) {
-			let users = localStorage.getItem("Users");
-			let objUsers = JSON.parse(users);
-			User.objArray = objUsers;
-		} else {
-			localStorage.setItem("Users", JSON.stringify(User.objArray));
-		}
+		// if (localStorage.getItem("Users") != null) {
+		// 	let users = localStorage.getItem("Users");
+		// 	let objUsers = JSON.parse(users);
+		// 	User.objArray = objUsers;
+		// } else {
+		// 	localStorage.setItem("Users", JSON.stringify(User.objArray));
+		// }
 	}
 
 	static updateNamaById(id, nama) {
@@ -45,7 +45,6 @@ class User {
 
 const user1 = new User("user 1");
 const user2 = new User("user 2");
-const user3 = new User("user 3");
 
 class CardBoard extends HTMLElement {
 	connectedCallback() {
