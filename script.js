@@ -129,7 +129,7 @@ for (let i = 0; i < User.objCount; i++) {
 	const mainElement = document.querySelector("main");
 	const cardBoardElement = document.createElement("card-board");
 
-	if (User.objArray[i].nama != undefined && User.objArray[i].nama != "") {
+	if (User.objArray[i].nama) {
 		cardBoardElement.id = User.objArray[i].id;
 		cardBoardElement.nama = User.objArray[i].nama;
 		cardBoardElement.scoreValue = User.objArray[i].score;
