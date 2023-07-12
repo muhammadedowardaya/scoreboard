@@ -45,6 +45,7 @@ class User {
 
 const user1 = new User("user 1");
 const user2 = new User("user 2");
+const user3 = new User("user 3");
 
 class CardBoard extends HTMLElement {
 	connectedCallback() {
